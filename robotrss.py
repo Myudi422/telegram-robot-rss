@@ -22,9 +22,9 @@ class RobotRss(object):
         self.dispatcher = self.updater.dispatcher
 
         # Add Commands to bot
-        self._addCommand(CommandHandler("rss", self.start))
+        self._addCommand(CommandHandler("rss", self.rss))
         self._addCommand(CommandHandler("stop", self.stop))
-        self._addCommand(CommandHandler("how", self.help))
+        self._addCommand(CommandHandler("how", self.how))
         self._addCommand(CommandHandler("list", self.list))
         self._addCommand(CommandHandler("about", self.about))
         self._addCommand(CommandHandler("add", self.add, pass_args=True))
