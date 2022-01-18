@@ -145,7 +145,7 @@ class RobotRss(object):
 
         entries = FeedHandler.parse_feed(url[0], args_count)
         for entry in entries:
-            message = "UPDATE ❗: " + **entry.title** + " \nINFO LEBIH LANJUT : <a href='" + \
+            message = "UPDATE ❗: "**+ entry.title +**" \nINFO LEBIH LANJUT : <a href='" + \
                 entry.link + "'>" Klik disini "</a> \n\n  Notifikasi Dari - [" + url[1] + "] | @ccgnimex_bot" 
             print(message)
             try:
