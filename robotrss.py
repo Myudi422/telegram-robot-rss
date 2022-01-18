@@ -146,7 +146,8 @@ class RobotRss(object):
         entries = FeedHandler.parse_feed(url[0], args_count)
         for entry in entries:
             message = "UPDATE ❗️: [" + url[1] + "] <a href='" + \
-                entry.link + "'>" + entry.title + "</a> \n Notifikasi by @ccgnimex_bot",
+                entry.link + "'>" + entry.title + "</a> \n Notifikasi by @ccgnimex_bot" 
+            print(message),
             reply_markup = InlineKeyboardMarkup(
                 [
                     [
@@ -157,8 +158,7 @@ class RobotRss(object):
                         InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302")
                     ],
                 ]
-            ) 
-            print(message)
+            )
 
             try:
                 update.message.reply_text(message, parse_mode=ParseMode.HTML)
