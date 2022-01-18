@@ -80,7 +80,7 @@ class RobotRss(object):
         telegram_user = update.message.from_user
 
         if len(args) != 2:
-            message = "Sorry! I could not add the entry! Please use the the command passing the following arguments:\n\n /add <url> <entryname> \n\n Here is a short example: \n\n /add http://www.feedforall.com/sample.xml ExampleEntry"
+            message = "Maaf! Saya tidak dapat menambahkan entri! Silakan gunakan perintah dengan memberikan argumen berikut:\n\n /add <url> <entryname> \n\n Berikut adalah contoh singkatnya: \n\n /add http:/ /www.feedforall.com/sample.xml ContohEntri"
             update.message.reply_text(message)
             return
 
@@ -89,8 +89,8 @@ class RobotRss(object):
 
         # Check if argument matches url format
         if not FeedHandler.is_parsable(url=arg_url):
-            message = "Sorry! It seems like '" + \
-                str(arg_url) + "' doesn't provide an RSS news feed.. Have you tried another URL from that provider?"
+            message = "Maaf! Sepertinya '" + \
+                str(arg_url) + "' tidak dapat menaambahkan RSS.. Sudahkah Anda mencoba URL lain dari penyedia itu?"
             update.message.reply_text(message)
             return
 
@@ -99,20 +99,20 @@ class RobotRss(object):
         print(entries)
 
         if any(arg_url.lower() in entry for entry in entries):
-            message = "Sorry, " + telegram_user.first_name + \
-                "! I already have that url with stored in your subscriptions."
+            message = "Maaf, " + telegram_user.first_name + \
+                "! Saya sudah memiliki url itu dengan tersimpan di langganan Anda. cek /list"
             update.message.reply_text(message)
             return
 
         if any(arg_entry in entry for entry in entries):
-            message = "Sorry! I already have an entry with name " + \
-                arg_entry + " stored in your subscriptions.. Please choose another entry name or delete the entry using '/remove " + arg_entry + "'"
+            message = "Maaf! Saya sudah memiliki entri dengan nama " + \
+                arg_entry + " disimpan di langganan Anda.. Silakan pilih nama entri lain atau hapus entri menggunakan '/remove " + arg_entry + "'"
             update.message.reply_text(message)
             return
 
         self.db.add_user_bookmark(
             telegram_id=telegram_user.id, url=arg_url.lower(), alias=arg_entry)
-        message = "I successfully added " + arg_entry + " to your subscriptions!"
+        message = "Saya berhasil menambahkan " + arg_entry + " ke langganan Anda!"
         update.message.reply_text(message)
 
     def get(self, bot, update, args):
@@ -123,7 +123,7 @@ class RobotRss(object):
         telegram_user = update.message.from_user
 
         if len(args) > 2:
-            message = "To get the last news of your subscription please use /get <entryname> [optional: <count 1-10>]. Make sure you first add a feed using the /add command."
+            message = "Untuk mendapatkan berita terakhir dari langganan Anda, silakan gunakan /get <entryname> [optional: <count 1-10>]. Pastikan Anda menambahkan feed terlebih dahulu menggunakan perintah /add."
             update.message.reply_text(message)
             return
 
@@ -138,8 +138,8 @@ class RobotRss(object):
             telegram_id=telegram_user.id, alias=args_entry)
 
         if url is None:
-            message = "I can not find an entry with label " + \
-                args_entry + " in your subscriptions! Please check your subscriptions using /list and use the delete command again!"
+            message = "Saya tidak dapat menemukan entri dengan label " + \
+                args_entry + " di langganan Anda! Silakan periksa langganan Anda menggunakan /list dan gunakan perintah hapus lagi!"
             update.message.reply_text(message)
             return
 
@@ -165,7 +165,7 @@ class RobotRss(object):
         telegram_user = update.message.from_user
 
         if len(args) != 1:
-            message = "To remove a subscriptions from your list please use /remove <entryname>. To see all your subscriptions along with their entry names use /list !"
+            message = "Untuk menghapus langganan dari daftar Anda, gunakan /remove <entryname>. Untuk melihat semua langganan Anda beserta nama entrinya, gunakan /list !"
             update.message.reply_text(message)
             return
 
@@ -175,11 +175,11 @@ class RobotRss(object):
         if entry:
             self.db.remove_user_bookmark(
                 telegram_id=telegram_user.id, url=entry[0])
-            message = "I removed " + args[0] + " from your subscriptions!"
+            message = "Saya Menghapus " + args[0] + " dari daftar RSS"
             update.message.reply_text(message)
         else:
-            message = "I can not find an entry with label " + \
-                args[0] + " in your subscriptions! Please check your subscriptions using /list and use the delete command again!"
+            message = "Saya tidak dapat menemukan entri dengan label " + \
+                args[0] + " di langganan Anda! Silakan periksa langganan Anda menggunakan /list dan gunakan perintah hapus lagi!"
             update.message.reply_text(message)
 
     def list(self, bot, update):
@@ -189,7 +189,7 @@ class RobotRss(object):
 
         telegram_user = update.message.from_user
 
-        message = "Here is a list of all subscriptions I stored for you!"
+        message = "Berikut adalah daftar semua langganan yang saya simpan untuk Anda!"
         update.message.reply_text(message)
 
         entries = self.db.get_urls_for_user(telegram_id=telegram_user.id)
@@ -203,7 +203,7 @@ class RobotRss(object):
         Send a message when the command /help is issued.
         """
 
-        message = "If you need help with handling the commands, please have a look at my <a href='https://github.com/cbrgm/telegram-robot-rss'>Github</a> page. There I have summarized everything necessary for you!"
+        message = "gunakan /help bruh..."
         update.message.reply_text(message, parse_mode=ParseMode.HTML)
 
     def stop(self, bot, update):
@@ -214,7 +214,7 @@ class RobotRss(object):
         telegram_user = update.message.from_user
         self.db.update_user(telegram_id=telegram_user.id, is_active=0)
 
-        message = "Oh.. Okay, I will not send you any more news updates! If you change your mind and you want to receive messages from me again use /start command again!"
+        message = "Oh.. Oke, saya tidak akan mengirimi Anda pembaruan berita lagi! Jika Anda berubah pikiran dan ingin menerima pesan dari saya lagi, gunakan perintah /rss lagi!"
         update.message.reply_text(message)
 
     def about(self, bot, update):
