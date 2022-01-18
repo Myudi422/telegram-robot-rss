@@ -157,8 +157,7 @@ class RobotRss(object):
                         InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302")
                     ],
                 ]
-            )
-        )    
+            ) 
             print(message)
 
             try:
