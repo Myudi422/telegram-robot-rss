@@ -73,7 +73,7 @@ class BatchProcess(threading.Thread):
 
         if post_update_date > url_update_date:
             message = "[" + user[7] + "] <a href='" + post.link + \
-                "'>" + post.title + "</a>"
+                "'>" + post.title + "</a>\n Pemberitahuan by @ccgnimeX_bot."
             try:
                 self.bot.send_message(
                     chat_id=user[0], text=message, parse_mode=ParseMode.HTML)
