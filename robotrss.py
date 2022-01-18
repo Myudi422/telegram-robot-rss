@@ -145,21 +145,9 @@ class RobotRss(object):
 
         entries = FeedHandler.parse_feed(url[0], args_count)
         for entry in entries:
-            message = "UPDATE ❗️: [" + url[1] + "] <a href='" + \
-                entry.link + "'>" + entry.title + "</a> \n Notifikasi by @ccgnimex_bot" 
-            print(message),
-            reply_markup = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("🔍 Cari di Database", switch_inline_query_current_chat="")
-                    ],
-                    [
-                        InlineKeyboardButton("📩 Lapor/REQ", url="https://t.me/otakuindonew"),
-                        InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302")
-                    ],
-                ]
-            )
-
+            message = "UPDATE ❗️: **" + entry.title + "** \n INFO LEBIH LANJUT : <a href='" + \
+                entry.link + "'>" + entry.title + "</a> \n\n  Notifikasi Dari - [" + url[1] + "] | @ccgnimex_bot" 
+            print(message)
             try:
                 update.message.reply_text(message, parse_mode=ParseMode.HTML)
             except Unauthorized:
