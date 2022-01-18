@@ -22,9 +22,9 @@ class RobotRss(object):
         self.dispatcher = self.updater.dispatcher
 
         # Add Commands to bot
-        self._addCommand(CommandHandler("start", self.start))
+        self._addCommand(CommandHandler("rss", self.start))
         self._addCommand(CommandHandler("stop", self.stop))
-        self._addCommand(CommandHandler("help", self.help))
+        self._addCommand(CommandHandler("how", self.help))
         self._addCommand(CommandHandler("list", self.list))
         self._addCommand(CommandHandler("about", self.about))
         self._addCommand(CommandHandler("add", self.add, pass_args=True))
@@ -46,7 +46,7 @@ class RobotRss(object):
 
         self.updater.dispatcher.add_handler(command)
 
-    def start(self, bot, update):
+    def rss(self, bot, update):
         """
         Send a message when the command /start is issued.
         """
@@ -56,7 +56,7 @@ class RobotRss(object):
         # Add new User if not exists
         if not self.db.get_user(telegram_id=telegram_user.id):
 
-            message = "Hello! I don't think we've met before! I am an RSS News Bot and would like to help you to receive your favourite news in the future! Let me first set up a few things before we start..."
+            message = "RSS notifikasi Telah diaktifkan, silahkan klik /how disini."
             update.message.reply_text(message)
 
             self.db.add_user(telegram_id=telegram_user.id,
@@ -69,7 +69,7 @@ class RobotRss(object):
 
         self.db.update_user(telegram_id=telegram_user.id, is_active=1)
 
-        message = "You will now receive news! Use /help if you need some tips how to tell me what to do!"
+        message = "silahkan klik /how disini.! untuk proses lebih lanjut!!"
         update.message.reply_text(message)
 
     def add(self, bot, update, args):
@@ -198,7 +198,7 @@ class RobotRss(object):
             message = "[" + entry[1] + "]\n " + entry[0]
             update.message.reply_text(message)
 
-    def help(self, bot, update):
+    def how(self, bot, update):
         """
         Send a message when the command /help is issued.
         """
@@ -236,7 +236,7 @@ if __name__ == '__main__':
     else:
         token = credentials["telegram_token"]
     if 'UPDATE_INTERVAL' in os.environ:
-        update = int(os.environ.get("UPDATE_INTERVAL", 300))
+        update = int(os.environ.get("UPDATE_INTERVAL", 100))
     else:
         update = credentials["update_interval"]
 
