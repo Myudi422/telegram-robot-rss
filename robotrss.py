@@ -148,18 +148,7 @@ class RobotRss(object):
         entries = FeedHandler.parse_feed(url[0], args_count)
         for entry in entries:
             message = "<b>❗UPDATE : " + entry.title + "</b> \n\nUntuk melihat postingan ini, silahkan <a href='" + \
-                entry.link + "'>Klik disini</a> \nNotifikasi Dari - " + url[1] + " | @ccgnimex_bot",
-            reply_markup = InlineKeyboardMarkup(
-                [
-                    [
-                        InlineKeyboardButton("🔍 Cari di Database", switch_inline_query_current_chat="")
-                    ],
-                    [
-                        InlineKeyboardButton("📩 Lapor/REQ", url="https://t.me/otakuindonew"),
-                        InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302")
-                    ],
-                ]
-            ),
+                entry.link + "'>Klik disini</a> \nNotifikasi Dari - <b>" + url[1] + "</b> | @ccgnimex_bot"
             print(message)
             try:
                 update.message.reply_text(message, parse_mode=ParseMode.HTML)
