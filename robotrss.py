@@ -149,7 +149,7 @@ class RobotRss(object):
         for entry in entries:
             message = "<b>❗UPDATE : " + entry.title + "</b> \n\nUntuk melihat postingan ini, silahkan <a href='" + \
                 entry.link + "'>Klik disini</a> \nNotifikasi Dari - " + url[1] + " | @ccgnimex_bot",
-        reply_markup = InlineKeyboardMarkup(
+            reply_markup = InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton("🔍 Cari di Database", switch_inline_query_current_chat="")
@@ -159,7 +159,7 @@ class RobotRss(object):
                         InlineKeyboardButton("💠 Versi Batch", url="https://t.me/downloadanimebatch/302")
                     ],
                 ]
-            )
+            ),
             print(message)
             try:
                 update.message.reply_text(message, parse_mode=ParseMode.HTML)
