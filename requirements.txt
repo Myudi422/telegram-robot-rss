@@ -1,6 +1,7 @@
+pyrogram
 certifi==2017.7.27.1
 emoji==0.4.5
-feedparser==5.2.1
+feedparser==6.0.8
 future==0.16.0
 python-dateutil==2.6.1
 python-telegram-bot==8.1.1
