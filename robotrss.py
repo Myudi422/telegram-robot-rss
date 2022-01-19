@@ -7,6 +7,7 @@ from util.filehandler import FileHandler
 from util.database import DatabaseHandler
 from util.processing import BatchProcess
 from util.feedhandler import FeedHandler
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 import os
 
 class RobotRss(object):
@@ -146,7 +147,8 @@ class RobotRss(object):
         entries = FeedHandler.parse_feed(url[0], args_count)
         for entry in entries:
             message = "<b>❗UPDATE : " + entry.title + "</b> \n\nUntuk melihat postingan ini, silahkan <a href='" + \
-                entry.link + "'>Klik disini</a> \nNotifikasi Dari - " + url[1] + " | @ccgnimex_bot" 
+                entry.link + "'>Klik disini</a> \nNotifikasi Dari - " + url[1] + " | @ccgnimex_bot"
+            btn = InlineKeyboardMarkup([[InlineKeyboardButton("More Info", url=" + url[1] + ")]]) 
             print(message)
             try:
                 update.message.reply_text(message, parse_mode=ParseMode.HTML)
