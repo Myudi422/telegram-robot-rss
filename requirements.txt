@@ -1,4 +1,6 @@
 pyrogram
+tgcrypto
+requests
 certifi==2017.7.27.1
 emoji==0.4.5
 feedparser==6.0.8
