@@ -71,7 +71,7 @@ class RobotRss(object):
 
         self.db.update_user(telegram_id=telegram_user.id, is_active=1)
 
-        message = "silahkan klik /how disini.! untuk proses lebih lanjut!!"
+        message = "Untuk kalian yang ingin menambahkan pemberitahuan RSS/Notifikasi Update dari website/channel. bisa kalian gunakan perintah dibawah ini.\n/add <url> <entryname> - Menambahkan langganan baru ke daftar Anda.\n/remove <entryname> - Menghapus langganan yang ada dari daftar Anda.\n/get <entryname> [opsional: <count 1-10>] - Secara manual mem-parsing langganan Anda, mengirimkan elemen terakhir kepada Anda.\n/list - Menampilkan semua langganan Anda sebagai daftar.\n Silahkan Copy Command RSS yang sudah kami sediakan:\n> Muse Indonesia : `/add http://fetchrss.com/rss/61e259c189968e095b75231361e259d97070e67bda6d92f2.xml MuseIndonesia`\n>OpLovers: `/add https://oploverz.fan/feed/ OpLovers`\n> Kusonime: `/add https://kusonime.com/feed/ Kusonime`\n> NontonAnimeID: `https://nontonanimeid.one/feed/ NontonAnimeID`\n\nBisa juga kalian menambahkan selain diatas, dengan cara ambil feed/rss nya, banyak kok digoogle caranya :v."
         update.message.reply_text(message)
 
     def add(self, bot, update, args):
