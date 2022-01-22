@@ -58,7 +58,7 @@ class RobotRss(object):
         # Add new User if not exists
         if not self.db.get_user(telegram_id=telegram_user.id):
 
-            message = "RSS notifikasi Telah diaktifkan, silahkan klik /how disini."
+            message = "RSS notifikasi Telah diaktifkan"
             update.message.reply_text(message)
 
             self.db.add_user(telegram_id=telegram_user.id,
@@ -71,7 +71,7 @@ class RobotRss(object):
 
         self.db.update_user(telegram_id=telegram_user.id, is_active=1)
 
-        message = "Untuk kalian yang ingin menambahkan pemberitahuan RSS/Notifikasi Update dari website/channel. bisa kalian gunakan perintah dibawah ini.\n\n◈ /add <url> <entryname> - Menambahkan langganan baru ke daftar Anda.\n◈ /remove <entryname> - Menghapus langganan yang ada dari daftar Anda.\n\n◈ /get <entryname> [opsional: <count 1-10>] - Secara manual mem-parsing langganan Anda, mengirimkan elemen terakhir kepada Anda.\n\n◈ /list - Menampilkan semua langganan Anda sebagai daftar.\n\n◈ Silahkan Copy Command RSS yang sudah kami sediakan:\n\n◈ Muse Indonesia : '/add http://fetchrss.com/rss/61e259c189968e095b75231361e259d97070e67bda6d92f2.xml MuseIndonesia'\n\n◈ OpLovers: `/add https://oploverz.fan/feed/ OpLovers`\n> Kusonime: `/add https://kusonime.com/feed/ Kusonime`\n> NontonAnimeID: `https://nontonanimeid.one/feed/ NontonAnimeID`\n\nBisa juga kalian menambahkan selain diatas, dengan cara ambil feed/rss nya, banyak kok digoogle caranya :v."
+        message = "Untuk kalian yang ingin menambahkan pemberitahuan RSS/Notifikasi Update dari website/channel. bisa kalian gunakan perintah dibawah ini.\n\n◈ /add <url> <entryname> - Menambahkan langganan baru ke daftar Anda.\n◈ /remove <entryname> - Menghapus langganan yang ada dari daftar Anda.\n◈ /get <entryname> [opsional: <count 1-10>] - Secara manual mem-parsing langganan Anda, mengirimkan elemen terakhir kepada Anda.\n◈ /list - Menampilkan semua langganan Anda sebagai daftar.\n\n**Silahkan Copy Command RSS yang sudah kami sediakan:**\n◈ Muse Indonesia : /add http://fetchrss.com/rss/61e259c189968e095b75231361e259d97070e67bda6d92f2.xml MuseIndonesia\n\n◈ OpLovers: /add https://oploverz.fan/feed/ OpLovers\n\n◈ Kusonime: /add https://kusonime.com/feed/ Kusonime\n\n◈ NontonAnimeID: https://nontonanimeid.one/feed/ NontonAnimeID\n\nBisa juga kalian menambahkan selain diatas, dengan cara ambil feed/rss nya, banyak kok digoogle caranya :v."
         update.message.reply_text(message)
 
     def add(self, bot, update, args):
@@ -204,7 +204,7 @@ class RobotRss(object):
         Send a message when the command /help is issued.
         """
 
-        message = "gunakan /help bruh..."
+        message = "Untuk kalian yang ingin menambahkan pemberitahuan RSS/Notifikasi Update dari website/channel. bisa kalian gunakan perintah dibawah ini.\n\n◈ /add <url> <entryname> - Menambahkan langganan baru ke daftar Anda.\n◈ /remove <entryname> - Menghapus langganan yang ada dari daftar Anda.\n◈ /get <entryname> [opsional: <count 1-10>] - Secara manual mem-parsing langganan Anda, mengirimkan elemen terakhir kepada Anda.\n◈ /list - Menampilkan semua langganan Anda sebagai daftar.\n\n**Silahkan Copy Command RSS yang sudah kami sediakan:**\n◈ Muse Indonesia : /add http://fetchrss.com/rss/61e259c189968e095b75231361e259d97070e67bda6d92f2.xml MuseIndonesia\n\n◈ OpLovers: /add https://oploverz.fan/feed/ OpLovers\n\n◈ Kusonime: /add https://kusonime.com/feed/ Kusonime\n\n◈ NontonAnimeID: https://nontonanimeid.one/feed/ NontonAnimeID\n\nBisa juga kalian menambahkan selain diatas, dengan cara ambil feed/rss nya, banyak kok digoogle caranya :v."
         update.message.reply_text(message, parse_mode=ParseMode.HTML)
 
     def stop(self, bot, update):
